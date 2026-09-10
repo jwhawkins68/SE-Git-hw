@@ -1,56 +1,77 @@
-# SE-Git-hw
+# CINS 5318: Software Engineering - Assignment 1
 
-Homework 1 for Software Engineering: version control using Git and GitHub.
+## Version Control and Collaborative Development using Git and GitHub
+
+**Author:** James Hawkins (`jwhawkins68`)  
+**Course:** CINS 5318 Software Engineering (Fall 2026)  
+**Institution:** Prairie View A&M University  
+**Repository:** <https://github.com/jwhawkins68/SE-Git-hw>
 
 ## Project overview
 
-This repository demonstrates a small Python project and a collaborative Git
-workflow. It includes the original greeting program, an additional feature
-script, parallel branch updates, conflict resolution, and merge history.
+This repository demonstrates the practical use of Git and GitHub for a small
+Python project. The assignment covers repository setup, feature isolation,
+pull-request integration, merge-conflict resolution, issue traceability, and
+project documentation.
 
-## Files
+## File index
 
-| File | Description |
+| File | Type | Description |
+| --- | --- | --- |
+| `README.md` | Markdown | Project overview, workflow documentation, and contributor record. |
+| `hello.py` | Python script | Prints the reconciled greeting produced by the Branch A and Branch B workflow. |
+| `apple.py` | Python script | Feature script that prints `I eat apple`. |
+
+## Branching strategy
+
+| Branch | Purpose |
 | --- | --- |
-| `hello.py` | Prints the reconciled greeting from the Branch A and Branch B workflow. |
-| `apple.py` | Feature script that prints an apple-related message. |
+| `main` | Stable integrated branch. |
+| `feature-1` | Isolated branch used to add `apple.py` before pull-request integration. |
+| `conflict-branch-a` | First branch used to create a competing greeting change. |
+| `conflict-branch-b` | Parallel branch used to create and resolve the competing greeting change. |
 
-## Git workflow demonstrated
+## Conflict simulation and resolution
 
-| Step | Result |
-| --- | --- |
-| Initial project setup | Created the Python greeting program and repository. |
-| Feature development | Added `apple.py` on `feature-1`. |
-| Parallel work | Updated `hello.py` independently on `conflict-branch-a` and `conflict-branch-b`. |
-| Conflict resolution | Reconciled the competing greetings into a single final message. |
-| Documentation | Added this project overview and file reference. |
+The two conflict branches changed the same line in `hello.py` to different
+greetings. Git therefore required a manual resolution. The final reconciled
+implementation is:
 
-## Contributors
+```python
+print("Hello, World from Branch A and Branch B reconciled!")
+```
 
-| Contributor | Responsibility |
-| --- | --- |
-| `jwhawkins68` | Repository owner and project implementation. |
-| `hemzz2020` | Collaborator for the version-control assignment. |
-| GitHub Copilot | Pair-programming and documentation assistance. |
+The resulting history can be inspected with:
+
+```bash
+git log --graph --oneline --all
+```
 
 ## Running the scripts
 
-Run either script with Python 3:
+Use Python 3 from the repository root:
 
 ```bash
 python3 hello.py
 python3 apple.py
 ```
 
-## Repository workflow
+## Contributors
 
-The main branch contains integrated work. Feature and conflict branches are
-used to demonstrate isolated changes before they are merged and pushed:
+| Contributor | Responsibility |
+| --- | --- |
+| `jwhawkins68` / James Hawkins | Repository owner and assignment implementation. |
+| `hemzz2020` | Collaborator for the version-control assignment. |
+| GitHub Copilot | Pair-programming and documentation assistance. |
+
+## Common Git workflow
 
 ```bash
 git status
-git log --graph --oneline --all
 git add <file>
 git commit -m "Describe the change"
 git push origin <branch>
 ```
+
+Issue and commit references are retained in the repository history to provide
+traceability for the assignment work.
