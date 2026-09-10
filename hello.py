@@ -1,1 +1,1 @@
-print("Hello, World from Branch A and Branch B reconciled!")
+print("Hello, World from Branch B!")
